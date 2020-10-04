@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const WelComePage = (props) => {
+const WelcomePage = (props) => {
   const {errorsCount} = props;
 
   return (
@@ -23,8 +23,8 @@ const WelComePage = (props) => {
   );
 };
 
-WelComePage.propTypes = {
+WelcomePage.propTypes = {
   errorsCount: PropTypes.number.isRequired,
 };
 
-export default WelComePage;
+export default WelcomePage;
