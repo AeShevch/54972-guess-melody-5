@@ -1,9 +1,9 @@
 import React from "react";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import Welcome from "../../pages/welcome/welcome";
-import SignIn from "../../pages/sign-In/sign-In";
-import Result from "../../pages/result/result";
-import GameOver from "../../pages/game-over/game-over";
+import Welcome from "../welcome-page/welcome-page";
+import SignIn from "../sign-in-page/sign-in-page";
+import Result from "../result-page/result-page";
+import GameOver from "../game-over-page/game-over-page";
 
 const App = () => {
   return (

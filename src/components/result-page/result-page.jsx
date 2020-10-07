@@ -1,6 +1,6 @@
 import React from "react";
 
-const Result = () => {
+const ResultPage = () => {
   return (
     <section className="result">
       <div className="result__logo">
@@ -13,4 +13,4 @@ const Result = () => {
   );
 };
 
-export default Result;
+export default ResultPage;

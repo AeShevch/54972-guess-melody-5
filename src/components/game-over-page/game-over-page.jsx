@@ -1,6 +1,6 @@
 import React from "react";
 
-const GameOver = () => {
+const GameOverPage = () => {
   return (
     <section className="result">
       <div className="result__logo">
@@ -14,4 +14,4 @@ const GameOver = () => {
   );
 };
 
-export default GameOver;
+export default GameOverPage;
