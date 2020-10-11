@@ -1,17 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
+import ButtonStart from "../button-start/button-start";
 
-const WelcomePage = (props) => {
+const WelcomeScreen = (props) => {
   const {errorsCount} = props;
 
   return (
     <section className="welcome">
       <div className="welcome__logo">
-        <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
+        <img src="/img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
       </div>
-      <button className="welcome__button" type="button">
-        <span className="visually-hidden">Начать игру</span>
-      </button>
+      <ButtonStart/>
       <h2 className="welcome__rules-title">Правила игры</h2>
       <p className="welcome__text">Правила просты:</p>
       <ul className="welcome__rules-list">
@@ -23,8 +22,8 @@ const WelcomePage = (props) => {
   );
 };
 
-WelcomePage.propTypes = {
+WelcomeScreen.propTypes = {
   errorsCount: PropTypes.number.isRequired,
 };
 
-export default WelcomePage;
+export default WelcomeScreen;
