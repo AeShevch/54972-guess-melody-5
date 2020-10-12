@@ -8,7 +8,7 @@ const WelcomeScreen = (props) => {
   return (
     <section className="welcome">
       <div className="welcome__logo">
-        <img src="/img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
+        <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
       </div>
       <ButtonStart/>
       <h2 className="welcome__rules-title">Правила игры</h2>

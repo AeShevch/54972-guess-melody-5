@@ -1,8 +1,8 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import AbstractGameComponent from "../abstract-game-component/abstract-game-component";
+import withAnswerChangeHandle from "../../hocs/with-answer-change-handle";
 
-export default class QuestionGenreScreen extends AbstractGameComponent {
+class QuestionGenreScreen extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -11,8 +11,8 @@ export default class QuestionGenreScreen extends AbstractGameComponent {
     };
   }
 
-  _renderGame() {
-    const {handleSubmit, question} = this.props;
+  render() {
+    const {handleSubmit, handleChange, question} = this.props;
     const {answers, genre} = question;
     const {userAnswers} = this.state;
 
@@ -34,7 +34,7 @@ export default class QuestionGenreScreen extends AbstractGameComponent {
               </div>
               <div className="game__answer">
                 <input
-                  onChange={this.handleChange}
+                  onChange={handleChange}
                   className="game__input visually-hidden"
                   type="checkbox"
                   name="answer"
@@ -62,4 +62,7 @@ QuestionGenreScreen.propTypes = {
     genre: PropTypes.string.isRequired,
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
+
+export default withAnswerChangeHandle(QuestionGenreScreen);

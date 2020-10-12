@@ -1,8 +1,8 @@
-import React from "react";
+import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
-import AbstractGameComponent from "../abstract-game-component/abstract-game-component";
+import withAnswerChangeHandle from "../../hocs/with-answer-change-handle";
 
-export default class QuestionArtistScreen extends AbstractGameComponent {
+class QuestionArtistScreen extends PureComponent {
   constructor(props) {
     super(props);
 
@@ -11,8 +11,8 @@ export default class QuestionArtistScreen extends AbstractGameComponent {
     };
   }
 
-  _renderGame() {
-    const {handleSubmit, question} = this.props;
+  render() {
+    const {handleSubmit, handleChange, question} = this.props;
     const {song, answers} = question;
     const {userAnswers} = this.state;
 
@@ -39,7 +39,7 @@ export default class QuestionArtistScreen extends AbstractGameComponent {
                 type="radio"
                 name="answer"
                 checked={userAnswers[index]}
-                onChange={this.handleChange}
+                onChange={handleChange}
                 value={`answer-${index}`}
                 id={`answer-${index}`}
               />
@@ -68,3 +68,5 @@ QuestionArtistScreen.propTypes = {
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
 };
+
+export default withAnswerChangeHandle(QuestionArtistScreen);
