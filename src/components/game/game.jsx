@@ -27,6 +27,10 @@ export default class Game extends PureComponent {
     const {questions} = this.props;
     const {questionIndex} = this.state;
     const currentQuestion = questions[questionIndex];
+    const props = {
+      question: currentQuestion,
+      handleSubmit: this._handleSubmit,
+    };
 
     if (currentQuestion) {
       return (
@@ -53,8 +57,8 @@ export default class Game extends PureComponent {
           </header>
           {
             currentQuestion.type === `artist`
-              ? <QuestionArtistScreen question={currentQuestion} handleSubmit={this._handleSubmit}/>
-              : <QuestionGenreScreen question={currentQuestion} handleSubmit={this._handleSubmit}/>
+              ? <QuestionArtistScreen {...props}/>
+              : <QuestionGenreScreen {...props}/>
           }
         </section>
       );

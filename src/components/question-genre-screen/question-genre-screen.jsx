@@ -34,12 +34,12 @@ class QuestionGenreScreen extends PureComponent {
               </div>
               <div className="game__answer">
                 <input
-                  onChange={handleChange}
+                  onChange={handleChange.bind(this)}
                   className="game__input visually-hidden"
                   type="checkbox"
                   name="answer"
                   checked={userAnswers[index]}
-                  value={`answer-${index}`}
+                  value={index}
                   id={`answer-${index}`}
                 />
                 <label className="game__check" htmlFor={`answer-${index}`}>Отметить</label>

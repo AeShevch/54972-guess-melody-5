@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import ButtonStart from "../button-start/button-start";
+import {Link} from "react-router-dom";
 
 const WelcomeScreen = (props) => {
   const {errorsCount} = props;
@@ -10,7 +10,12 @@ const WelcomeScreen = (props) => {
       <div className="welcome__logo">
         <img src="img/melody-logo.png" alt="Угадай мелодию" width="186" height="83"/>
       </div>
-      <ButtonStart/>
+      <Link
+        to={`/game`}
+        className="welcome__button"
+      >
+        <span className="visually-hidden">Начать игру</span>
+      </Link>
       <h2 className="welcome__rules-title">Правила игры</h2>
       <p className="welcome__text">Правила просты:</p>
       <ul className="welcome__rules-list">

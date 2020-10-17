@@ -8,7 +8,7 @@ const withAnswerChangeHandle = (Component) => {
     }
 
     _handleChange(evt) {
-      const selectedElementIndex = parseInt(evt.target.value.replace(`answer-`, ``), 10);
+      const selectedElementIndex = +evt.target.value;
       const {type} = this.props.question;
       const newValue = evt.target.checked;
 
@@ -23,7 +23,7 @@ const withAnswerChangeHandle = (Component) => {
     }
 
     render() {
-      return <Component handleChange={this._handleChange.bind(this)} {...this.props} />;
+      return <Component handleChange={this._handleChange} {...this.props} />;
     }
   }
 

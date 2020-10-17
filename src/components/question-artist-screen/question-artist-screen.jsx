@@ -39,8 +39,8 @@ class QuestionArtistScreen extends PureComponent {
                 type="radio"
                 name="answer"
                 checked={userAnswers[index]}
-                onChange={handleChange}
-                value={`answer-${index}`}
+                onChange={handleChange.bind(this)}
+                value={index}
                 id={`answer-${index}`}
               />
               <label className="artist__name" htmlFor={`answer-${index}`}>
@@ -67,6 +67,7 @@ QuestionArtistScreen.propTypes = {
     })).isRequired,
   }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default withAnswerChangeHandle(QuestionArtistScreen);
