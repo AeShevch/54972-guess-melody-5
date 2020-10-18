@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import withAnswerChangeHandle from "../../hocs/with-answer-change-handle";
+import AudioPlayer from "../audioPlayer/audioPlayer";
 
 class QuestionGenreScreen extends PureComponent {
   constructor(props) {
@@ -8,13 +9,14 @@ class QuestionGenreScreen extends PureComponent {
 
     this.state = {
       userAnswers: [false, false, false, false],
+      activePlayer: 0,
     };
   }
 
   render() {
     const {handleSubmit, handleChange, question} = this.props;
     const {answers, genre} = question;
-    const {userAnswers} = this.state;
+    const {userAnswers, activePlayer} = this.state;
 
     return (
       <section className="game__screen">
@@ -27,11 +29,16 @@ class QuestionGenreScreen extends PureComponent {
           }}
         >
           {answers.map((answer, index) => (
-            <div className="track" key={`answer-${index}`}>
-              <button className="track__button track__button--play" type="button"></button>
-              <div className="track__status">
-                <audio src={answer.src}/>
-              </div>
+            <div className="track" key={answer.id}>
+              <AudioPlayer
+                playButtonClickHandle={() => {
+                  this.setState({
+                    activePlayer: activePlayer === index ? -1 : index
+                  });
+                }}
+                src={answer.src}
+                isPlaying={index === activePlayer}
+              />
               <div className="game__answer">
                 <input
                   onChange={handleChange.bind(this)}

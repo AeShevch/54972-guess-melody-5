@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import withAnswerChangeHandle from "../../hocs/with-answer-change-handle";
+import AudioPlayer from "../audioPlayer/audioPlayer";
 
 class QuestionArtistScreen extends PureComponent {
   constructor(props) {
@@ -8,23 +9,27 @@ class QuestionArtistScreen extends PureComponent {
 
     this.state = {
       userAnswers: [false, false, false],
+      isPlaying: true,
     };
   }
 
   render() {
     const {handleSubmit, handleChange, question} = this.props;
     const {song, answers} = question;
-    const {userAnswers} = this.state;
+    const {userAnswers, isPlaying} = this.state;
 
     return (
       <section className="game__screen">
         <h2 className="game__title">Кто исполняет эту песню?</h2>
         <div className="game__track">
           <div className="track">
-            <button className="track__button track__button--play" type="button"></button>
-            <div className="track__status">
-              <audio src={song.src}/>
-            </div>
+            <AudioPlayer
+              playButtonClickHandle={() => this.setState({
+                isPlaying: !isPlaying,
+              })}
+              src={song.src}
+              isPlaying={isPlaying}
+            />
           </div>
         </div>
 
@@ -33,7 +38,7 @@ class QuestionArtistScreen extends PureComponent {
           onChange={() => handleSubmit(question, userAnswers)}
         >
           {answers.map((answer, index) => (
-            <div className="artist" key={`answer-${index}`}>
+            <div className="artist" key={answer.id}>
               <input
                 className="artist__input visually-hidden"
                 type="radio"
