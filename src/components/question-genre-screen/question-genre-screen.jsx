@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import withAnswerChangeHandle from "../../hocs/with-answer-change-handle";
 import AudioPlayer from "../audioPlayer/audioPlayer";
 
+const EMPTY_ID = -1;
+
 class QuestionGenreScreen extends PureComponent {
   constructor(props) {
     super(props);
@@ -33,7 +35,7 @@ class QuestionGenreScreen extends PureComponent {
               <AudioPlayer
                 playButtonClickHandle={() => {
                   this.setState({
-                    activePlayer: activePlayer === index ? -1 : index
+                    activePlayer: activePlayer === index ? EMPTY_ID : index
                   });
                 }}
                 src={answer.src}

@@ -5,7 +5,6 @@ const AUDIO = `https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue
 
 export default [
   {
-    id: nanoid(),
     type: `genre`,
     genre: `rock`,
     answers: [{
@@ -26,7 +25,6 @@ export default [
       genre: `rock`,
     }],
   }, {
-    id: nanoid(),
     type: `artist`,
     song: {
       artist: `Jim Beam`,
@@ -46,4 +44,4 @@ export default [
       artist: `Jim Beam`,
     }],
   },
-];
+].map((item) => (Object.assign({}, item, {id: nanoid()})));
